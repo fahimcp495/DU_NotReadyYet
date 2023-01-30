@@ -1,0 +1,8 @@
+alias c="clear && g++ -std=c++17"
+alias cc="c main.cpp"
+alias r="./a.out"
+alias o="./a.out < in > out"
+alias f="cc && o"
+alias ff="c brute.cpp -o brute && ./a.out < in > out2"
+alias g="c gen.cpp -o gen && ./gen > in"
+alias dd="diff out out2"
