@@ -37,7 +37,7 @@ while (q--) {
   cout << ans << "\n";
 }
 ## kth number in a range: O(logn)
-int kth(node *ul, node *ur, int k, int s = 0, int e = E - 1) {
+int kth(node *ul, node *ur, int k, int s, int e) {
   if (s == e)  return s;
   int m = (s + e) / 2;
   int cnt_left = ur->left->sum - ul->left->sum;
@@ -50,5 +50,5 @@ for (int i = 0; i < n; ++i) {
 }
 while (q--) {
   int l, r, k;  cin >> l >> r >> k;  l--, r--;
-  int x = kth(root[l], root[r + 1], k);
+  int x = kth(root[l], root[r + 1], k, 0, sz - 1);
 }

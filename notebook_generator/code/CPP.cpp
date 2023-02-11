@@ -21,5 +21,10 @@ struct chash{
   }
 };
 gp_hash_table<ii, int, chash> cnt;
+## Random Number
 mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 int x = rng() % 495;
+## Running time
+clock_t st = clock();
+double t = (clock() - st) / (1.0 * CLOCKS_PER_SEC);
+

@@ -8,6 +8,12 @@ ll ceil (ll n, ll k) {
   if (n >= 0)  return (n + k - 1) / k;
   return n / k;
 }
+## Modular Inverse
+inv[1] = 1;
+for(int i = 2; i < N; ++i) {
+  inv[i] = -(mod / i) * inv[mod % i] % mod;
+  inv[i] += mod;
+}
 ## Highly Composite Number
 1e6(240),1e9(1344),1e12(6720),1e14(17280)
 ## Harmonic Lemma (ceill)

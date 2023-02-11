@@ -6,4 +6,4 @@
   - cdq(l, m)
   - handle influence of (l, m) to (m + 1, r)
   - cdq(m + 1, r)
-## Convert dynamic array problems to static array problem
+## Convert dynamic array offline problem to static array offline problem
