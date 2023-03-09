@@ -1,55 +1,53 @@
-struct AC{
+struct AC {
   const int A = 26;
   vector<vector<int>> nxt, idx;
   vector<int> lnk, out_lnk, ans;
-  AC(){newNode();}
-  int newNode(){
+  AC () { newNode(); }
+  int newNode() {
     nxt.eb(A, 0), idx.eb(0);
-    lnk.eb(0),  out_lnk.eb(0),  ans.eb(0);
-    return nxt.size()-1;
+    lnk.eb(0), out_lnk.eb(0), ans.eb(0);
+    return nxt.size() - 1;
   }
-  void clear(){
+  void clear () {
     nxt.clear(), idx.clear();
     lnk.clear(), out_lnk.clear(), ans.clear();
     newNode();
   }
-  // O(|p|)
-  void add(string p, int i){
-    int v=0;
-    for(char c: p){
-      if(!nxt[v][c-'a'])  nxt[v][c-'a'] = newNode();
-      v = nxt[v][c-'a'];
+  int add (string p, int i) {
+    int u = 0;
+    for (auto c: p) {
+      int id = c - 'a';
+      if (!nxt[u][id])  nxt[u][id] = newNode();
+      u = nxt[u][id];
     }
-    idx[v].eb(i);
+    idx[u].eb(i);
+    return u;
   }
-  // O(|p1+p2+p3+..|)
-  void build(){
-    queue<int> q; q.push(0);
-    while (!q.empty()){
-      int u=q.front();  q.pop();
-      for (int i = 0; i < A; ++i){
+  void build () {
+    queue<int> q;  q.push(0);
+    while (!q.empty()) {
+      int u = q.front();  q.pop();
+      for (int i = 0; i < A; ++i) {
         int v = nxt[u][i];
-        if(!v)  nxt[u][i] = nxt[lnk[u]][i];
+        if (!v)  nxt[u][i] = nxt[lnk[u]][i];
         else {
           lnk[v] = u? nxt[lnk[u]][i]: 0;
           out_lnk[v] = idx[lnk[v]].empty()? out_lnk[lnk[v]]: lnk[v];
           q.push(v);
+          // dp[v] = dp[v] + dp[lnk[v]]
         }
       }
     }
   }
-  // O(|T|+match)
-  void trav(string T){
-    int v=0;
-    for(char c: T){
-      if(!nxt[v][c-'a'])  v = lnk[v];
-      if(nxt[v][c-'a']) v=nxt[v][c-'a'];
-      for(auto& i: idx[v]){
-        ans[i]++;
-      }
-      int x = out_lnk[v];
-      while(x){
-        for(auto& i: idx[x]){
+  void trav (string T) {
+    int u = 0;
+    for (auto c: T) {
+      int id = c - 'a';
+      while (u and !nxt[u][id])  u = lnk[u];
+      u = nxt[u][id];
+      int x = u;
+      while (x) {
+        for (auto i: idx[x]) {
           ans[i]++;
         }
         x = out_lnk[x];

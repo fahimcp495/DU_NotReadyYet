@@ -1,5 +1,23 @@
 ## CHT
-
+vector<int> m, c;
+// Insert
+int mi, ci;  cin >> mi >> ci;
+while (sz >= 2) {
+  if (1ll*(ci-c[sz-2])*(m[sz-2]-m[sz-1]) <= 1ll*(c[sz-1]-c[sz-2])*(m[sz-2]-mi)) {
+    m.pop_back();  c.pop_back();
+    sz--;
+  } else break;
+}
+m.push_back(mi);  c.push_back(ci);  sz++;
+// Query
+int x;  cin >> x;
+int lo = 0, hi = sz-1;
+while (lo < hi) {
+  int mid = lo+hi>>1;
+  if (1ll*m[mid]*x+c[mid] > 1ll*m[mid+1]*x+c[mid+1]) lo = mid+1;
+  else  hi = mid;
+}
+cout << 1ll*m[lo]*x+c[lo] << '\n';
 ## Dynamic CHT
 const ll IS_QUERY = -(1LL << 62);
 struct line {

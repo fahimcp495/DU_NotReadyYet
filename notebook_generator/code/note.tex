@@ -261,3 +261,8 @@ MEC = n - MBM \\
 \[ \sum_{i = 1}^n \sum_{j = 1}^n gcd(i, j) = \sum_{k = 1}^n k \sum_{l = 1}^{\lfloor \frac{n}{k} \rfloor} \mu(l) \lfloor {\frac{n}{kl}} \rfloor^2 \]
 
 \[ \sum_{i = 1}^n \sum_{j = 1}^n gcd(i, j) = \sum_{k = 1}^n (\frac{\lfloor \frac{n}{k} \rfloor) (1 + \lfloor \frac{n}{k} \rfloor) }{2})^2 \sum_{d | k} \mu (d) kd \]
+
+\textbf{Tree Hashing}
+
+\( f(u) = sz[u] * \sum_{i = 0} f(v) * p^{i} \);    \( f(v) \) are sorted \)
+\( f(child) = 1 \)

@@ -1,6 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
-
 const int N = 3e5 + 9;
 
 const double inf = 1e100;

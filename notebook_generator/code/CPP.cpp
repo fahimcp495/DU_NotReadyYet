@@ -27,4 +27,11 @@ int x = rng() % 495;
 ## Running time
 clock_t st = clock();
 double t = (clock() - st) / (1.0 * CLOCKS_PER_SEC);
+string line;  getline(cin, line);
+istringstream iss;
+string word;
+while (iss >> word) {
+  cout << word << "\n";
+}
+#pragma GCC target("popcnt") ulimit -s 65532
 
